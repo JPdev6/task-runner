@@ -23,8 +23,6 @@ class EmailRequest(BaseModel):
     body: str
 
 @app.post("/task/email")
-def queue_email(request: EmailRequest):
-    print("✅ Queuing task to Celery...")
+def queue_email(request: EmailRequest) -> dict:
     result = send_email_task.delay(request.recipient, request.subject, request.body)
-    print(f"✅ Task queued with ID: {result.id}")
-    return {"message": "Email task queued"}
+    return {"message": "✅ Queuing task to Celery...", "task_id": result.id}

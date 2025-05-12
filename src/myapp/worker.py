@@ -1,6 +1,7 @@
 from celery import Celery
 import os
 from dotenv import load_dotenv
+from celery import shared_task
 
 load_dotenv()
 
@@ -12,7 +13,7 @@ celery = Celery(
     backend=redis_url
 )
 
-@celery.task
+@shared_task
 def send_email_task(recipient: str, subject: str, body: str) -> str:
     print("📬 [Celery] Processing task...")
     print(f"To: {recipient} | Subject: {subject} | Body: {body}")
