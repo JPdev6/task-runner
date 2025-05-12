@@ -1,6 +1,6 @@
 # 📬 FastAPI Background Task Runner with Celery & Redis
 
-This project is part of the **120‑Day Junior Python Developer Sprint** — specifically Project 03: **FastAPI Task Runner**. It demonstrates how to offload time-consuming operations like sending emails to background jobs using **Celery**, **Redis**, and **Docker**, all orchestrated with **Poetry**.
+A clean and production-ready Python microservice built with FastAPI, Celery, Redis, and Docker. This project showcases background task execution for operations like sending emails, following best practices for structure, testing, and deployment.
 
 ---
 
@@ -143,6 +143,10 @@ def test_queue_email():
 - Containerized microservices
 - Async task offloading
 
+---
+
+
+---
 
 ## 📄 License
 

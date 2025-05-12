@@ -1,8 +1,9 @@
 [tool.poetry]
-name = "main"
+name = "myapp"
 version = "0.1.0"
 description = "Example app"
 authors = ["Your Name <you@example.com>"]
+packages = [{ include = "myapp", from = "src" }]
 
 [tool.poetry.dependencies]
 python = "^3.10"
