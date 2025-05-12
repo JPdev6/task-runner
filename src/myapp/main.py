@@ -5,9 +5,12 @@ from dotenv import load_dotenv
 from .worker import send_email_task
 from fastapi.middleware.cors import CORSMiddleware
 
+
+
 load_dotenv()
 
 app = FastAPI()
+
 
 app.add_middleware(
     CORSMiddleware,

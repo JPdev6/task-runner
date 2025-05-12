@@ -11,6 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+
       postgres:
         image: postgres:15
         env:
@@ -23,6 +28,8 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+    env:
+      REDIS_URL: redis://localhost:6379/0
 
     steps:
       - uses: actions/checkout@v3

@@ -5,6 +5,12 @@ from celery import shared_task
 
 load_dotenv()
 
+celery_app = Celery(
+    "myapp",
+    broker=os.getenv("REDIS_URL", "redis://localhost:6379/0"),  # ✅ fallback default
+    backend=os.getenv("REDIS_URL", "redis://localhost:6379/0")
+)
+
 redis_url = os.getenv("REDIS_URL", "redis://localhost:6379/0")
 
 celery = Celery(
