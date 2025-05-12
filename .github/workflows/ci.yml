@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   test:
@@ -17,7 +17,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: myapp
-        ports: ['5432:5432']
+        ports: [ '5432:5432' ]
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -25,28 +25,28 @@ jobs:
           --health-retries 5
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Install Poetry
-      run: |
-        pip install poetry
-        poetry config virtualenvs.create false
+      - name: Install Poetry
+        run: |
+          pip install poetry
+          poetry config virtualenvs.create false
 
-    - name: Install dependencies
-      run: poetry install --no-interaction --no-ansi
+      - name: Install dependencies
+        run: poetry install --no-interaction --no-ansi
 
-    - name: Run pre-commit checks
-      run: poetry run pre-commit run --all-files
+      - name: Run pre-commit checks
+        run: poetry run pre-commit run --all-files
 
-    - name: Run mypy
-      run: poetry run mypy src tests
+      - name: Run mypy
+        run: poetry run mypy src tests
 
-    - name: Run tests
-      env:
-        DATABASE_URL: postgresql://postgres:postgres@localhost:5432/myapp
-      run: poetry run pytest
+      - name: Run tests
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/myapp
+        run: poetry run pytest

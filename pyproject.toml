@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "myapp"
+name = "main"
 version = "0.1.0"
 description = "Example app"
 authors = ["Your Name <you@example.com>"]
@@ -8,6 +8,9 @@ authors = ["Your Name <you@example.com>"]
 python = "^3.10"
 fastapi = "^0.110"
 uvicorn = "^0.29"
+celery = "^5.5.2"
+redis = "^6.0.0"
+python-dotenv = "^1.1.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.0"
